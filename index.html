@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dr. Cristian Colombo | Abogado Penalista en Buenos Aires</title>
+  <meta name="description" content="Estudio jurídico especializado en Derecho Penal. Representación de víctimas con experiencia en casos de alto perfil en CABA.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --accent: #1a1a1a;
+      --accent2: #2d2d2d;
+      --bg: #fafaf8;
+      --bg2: #f5f5f3;
+      --bg3: #ffffff;
+      --border: #e0e0dc;
+      --text: #1a1a1a;
+      --muted: #4a4a4a;
+      --success: #2e7d32;
+
+      --font-display: 'Playfair Display', serif;
+      --font-body: 'Lato', sans-serif;
+
+      --space-xs: 0.5rem;
+      --space-sm: 1rem;
+      --space-md: 1.5rem;
+      --space-lg: 2.5rem;
+      --space-xl: 4rem;
+      --space-2xl: clamp(3rem, 8vw, 6rem);
+
+      --radius-sm: 6px;
+      --radius-md: 12px;
+      --radius-lg: 20px;
+
+      --shadow-sm: 0 1px 3px rgba(0,0,0,.08);
+      --shadow-md: 0 4px 16px rgba(0,0,0,.12);
+      --shadow-lg: 0 8px 32px rgba(0,0,0,.16);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Navbar */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: var(--accent);
+      z-index: 1000;
+      padding: 1.25rem 0;
+      box-shadow: var(--shadow-md);
+    }
+
+    .navbar .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 clamp(1rem, 4vw, 2rem);
+    }
+
+    .navbar-logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      color: var(--bg3);
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      transition: opacity 0.2s ease;
+    }
+
+    .navbar-logo:hover {
+      opacity: 0.85;
+    }
+
+    @media (max-width: 768px) {
+      .navbar-logo {
+        font-size: 1.05rem;
+      }
+    }
+
+    .navbar-menu {
+      display: flex;
+      gap: var(--space-lg);
+      list-style: none;
+    }
+
+    .navbar-menu a {
+      color: var(--bg3);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      letter-spacing: 0.02em;
+      transition: opacity 0.2s ease;
+    }
+
+    .navbar-menu a:hover,
+    .navbar-menu a.active {
+      opacity: 0.7;
+    }
+
+    .navbar-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--bg3);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      .navbar-menu {
+        position: fixed;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background: var(--accent);
+        flex-direction: column;
+        gap: 0;
+        padding: var(--space-md) 0;
+        transform: translateY(-120%);
+        transition: transform 0.3s ease;
+      }
+
+      .navbar-menu.active {
+        transform: translateY(0);
+      }
+
+      .navbar-menu a {
+        padding: var(--space-sm) clamp(1rem, 4vw, 2rem);
+        display: block;
+      }
+
+      .navbar-toggle {
+        display: block;
+      }
+    }
+
+    /* Container */
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 clamp(1rem, 4vw, 2rem);
+    }
+
+    .container--narrow {
+      max-width: 760px;
+    }
+
+    /* Page system */
+    .page {
+      display: none;
+      min-height: 100vh;
+      padding-top: 80px;
+    }
+
+    .page.active {
+      display: block;
+    }
+
+    /* Typography */
+    h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      font-weight: 700;
+      margin-bottom: var(--space-md);
+    }
+
+    h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.75rem, 4vw, 3rem);
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+      font-weight: 600;
+      margin-bottom: var(--space-md);
+    }
+
+    h3 {
+      font-family: var(--font-display);
+      font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+      line-height: 1.3;
+      font-weight: 600;
+      margin-bottom: var(--space-sm);
+    }
+
+    p {
+      font-size: clamp(1rem, 2vw, 1.125rem);
+      line-height: 1.65;
+      color: var(--text);
+    }
+
+    .lead {
+      font-size: clamp(1.125rem, 2.5vw, 1.35rem);
+      line-height: 1.6;
+      color: var(--muted);
+    }
+
+    /* Section */
+    .section {
+      padding: var(--space-2xl) 0;
+    }
+
+    .section--hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: var(--space-2xl) 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: var(--space-xl);
+    }
+
+    /* Hero */
+    .hero-content {
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .hero-logo {
+      text-align: center;
+      margin-bottom: var(--space-xl);
+    }
+
+    .hero-logo img {
+      max-width: 600px;
+      width: 90%;
+      height: auto;
+      margin: 0 auto;
+      display: block;
+      mix-blend-mode: multiply;
+    }
+
+    @media (max-width: 768px) {
+      .hero-logo img {
+        max-width: 340px;
+        width: 85%;
+      }
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1.125rem, 2.5vw, 1.5rem);
+      color: var(--muted);
+      margin-bottom: var(--space-lg);
+      font-weight: 300;
+      text-align: center;
+    }
+
+    .hero-cta {
+      display: inline-block;
+      background: var(--accent);
+      color: var(--bg3);
+      padding: 1rem 2.5rem;
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.05rem;
+      letter-spacing: 0.02em;
+      transition: background 0.2s ease, transform 0.2s ease;
+      margin-top: var(--space-md);
+    }
+
+    .hero-cta:hover {
+      background: var(--accent2);
+      transform: translateY(-2px);
+    }
+
+    /* Grid */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+      gap: var(--space-lg);
+    }
+
+    /* Card */
+    .card {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: var(--space-lg);
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      border-color: var(--accent);
+      box-shadow: var(--shadow-md);
+    }
+
+    .card-icon {
+      width: 56px;
+      height: 56px;
+      background: var(--bg2);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: var(--space-md);
+      font-size: 1.5rem;
+    }
+
+    .card-title {
+      font-size: 1.35rem;
+      margin-bottom: var(--space-sm);
+    }
+
+    .card-text {
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+
+    /* About section */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: var(--space-xl);
+      align-items: start;
+      margin-bottom: var(--space-xl);
+    }
+
+    @media (max-width: 768px) {
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-lg);
+      }
+    }
+
+    .about-photo {
+      width: 100%;
+      aspect-ratio: 3/4;
+      background: var(--bg2);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    .about-content h3 {
+      margin-top: var(--space-lg);
+    }
+
+    .about-content ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .about-content ul li {
+      padding: var(--space-xs) 0;
+      color: var(--text);
+    }
+
+    .about-content ul li::before {
+      content: "•";
+      color: var(--accent);
+      font-weight: bold;
+      display: inline-block;
+      width: 1em;
+      margin-left: -1em;
+      padding-right: 0.5em;
+    }
+
+    .credentials {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: var(--space-lg);
+      margin-top: var(--space-lg);
+    }
+
+    .credentials-item {
+      display: flex;
+      justify-content: space-between;
+      padding: var(--space-sm) 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .credentials-item:last-child {
+      border-bottom: none;
+    }
+
+    .credentials-label {
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .credentials-value {
+      color: var(--muted);
+      text-align: right;
+    }
+
+    /* Form */
+    .form-group {
+      margin-bottom: var(--space-md);
+    }
+
+    label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: var(--space-xs);
+      color: var(--text);
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 0.85rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      font-family: var(--font-body);
+      font-size: 16px;
+      background: var(--bg3);
+      color: var(--text);
+      transition: border-color 0.2s ease;
+    }
+
+    input:focus,
+    textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 150px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--accent);
+      color: var(--bg3);
+      padding: 1rem 2.5rem;
+      border: none;
+      border-radius: var(--radius-sm);
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 1.05rem;
+      letter-spacing: 0.02em;
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+
+    .btn:hover {
+      background: var(--accent2);
+      transform: translateY(-2px);
+    }
+
+    .form-disclaimer {
+      font-size: 0.9rem;
+      color: var(--muted);
+      font-style: italic;
+      margin-bottom: var(--space-md);
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--accent);
+      color: var(--bg3);
+      padding: var(--space-xl) 0 var(--space-lg);
+      margin-top: var(--space-2xl);
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: var(--space-xl);
+      margin-bottom: var(--space-lg);
+    }
+
+    .footer-section h4 {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      margin-bottom: var(--space-md);
+      color: var(--bg3);
+    }
+
+    .footer-section p,
+    .footer-section a {
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      line-height: 1.8;
+    }
+
+    .footer-section a:hover {
+      color: var(--bg3);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: var(--space-lg);
+      border-top: 1px solid rgba(255,255,255,0.15);
+      color: rgba(255,255,255,0.7);
+      font-size: 0.9rem;
+    }
+
+    /* Accessibility */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="#home" class="navbar-logo" onclick="navigate('home')">
+        Cristian Colombo & Asociados
+      </a>
+      <button class="navbar-toggle" onclick="toggleMenu()" aria-label="Abrir menú">
+        ☰
+      </button>
+      <ul class="navbar-menu" id="navMenu">
+        <li><a href="#home" onclick="navigate('home')" class="nav-link">Inicio</a></li>
+        <li><a href="#servicios" onclick="navigate('servicios')" class="nav-link">Servicios</a></li>
+        <li><a href="#sobre-mi" onclick="navigate('sobre-mi')" class="nav-link">Sobre mí</a></li>
+        <li><a href="#contacto" onclick="navigate('contacto')" class="nav-link">Contacto</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Page: Home -->
+  <div id="page-home" class="page active">
+    <section class="section section--hero">
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-logo">
+            <img src="Captura de pantalla 2026-05-08 013756.png" alt="Cristian Colombo & Asociados">
+          </div>
+          <p class="hero-subtitle">Abogado especialista en Derecho Penal. 15 años de trayectoria en la Justicia Nacional en lo Criminal y Correccional Federal. Asesoramiento legal estratégico para personas físicas y empresas de primera línea en todo el país.</p>
+          <div style="text-align: center;">
+            <a href="#contacto" class="hero-cta" onclick="navigate('contacto')">Solicitar consulta</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container container--narrow">
+        <div class="section-title">
+          <h2>Perfil profesional</h2>
+        </div>
+        <p style="font-size: clamp(1.05rem, 2vw, 1.2rem); line-height: 1.7; color: var(--text); text-align: center; max-width: 900px; margin: 0 auto var(--space-lg);">
+          Abogado egresado de la Universidad de Buenos Aires (UBA), con una práctica profesional que se distingue por una visión estratégica integral, consolidada tras 15 años de carrera en la Justicia Nacional en lo Criminal y Correccional Federal. Esta experiencia otorga un conocimiento profundo de la dinámica interna del sistema judicial y del litigio de alta complejidad.
+        </p>
+        <div style="text-align: center;">
+          <a href="#sobre-mi" class="hero-cta" onclick="navigate('sobre-mi')" style="display: inline-block;">Conocer más sobre mi trayectoria</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="background: var(--bg3); padding: var(--space-2xl) 0;">
+      <div class="container">
+        <div class="grid">
+          <div class="card" style="text-align: center;">
+            <h3 class="card-title">Misión</h3>
+            <p class="card-text">Brindar soluciones jurídicas eficaces en Derecho Penal, combinando rigor técnico con confidencialidad absoluta, tanto en el plano preventivo como en la representación ante tribunales Nacional y Federal.</p>
+          </div>
+          <div class="card" style="text-align: center;">
+            <h3 class="card-title">Visión</h3>
+            <p class="card-text">Posicionarse como consultor legal de referencia para empresas y personas que requieren defensa técnica de vanguardia, orientada a la protección de derechos y garantías constitucionales.</p>
+          </div>
+          <div class="card" style="text-align: center;">
+            <h3 class="card-title">Valores</h3>
+            <p class="card-text">Excelencia técnica, confidencialidad, integridad profesional y actualización doctrinaria constante para garantizar una defensa estratégica de máximo nivel.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-title">
+          <h2>Áreas de práctica</h2>
+        </div>
+        <div class="grid">
+          <div class="card">
+            <div class="card-icon">⚖️</div>
+            <h3 class="card-title">Defensa Penal Estratégica</h3>
+            <p class="card-text">Representación de personas físicas y empresas ante tribunales Nacional y Federal en todo el país. Enfoque integral en litigios de alta complejidad.</p>
+          </div>
+          <div class="card">
+            <div class="card-icon">🏢</div>
+            <h3 class="card-title">Asesoramiento Corporativo</h3>
+            <p class="card-text">Consultoría legal preventiva para compañías nacionales e internacionales. Gestión de riesgos penales y compliance empresarial.</p>
+          </div>
+          <div class="card">
+            <div class="card-icon">🛡️</div>
+            <h3 class="card-title">Litigio de Alta Complejidad</h3>
+            <p class="card-text">Experiencia consolidada en casos de alto perfil. Conocimiento profundo del sistema judicial y estrategias de defensa técnica de vanguardia.</p>
+          </div>
+        </div>
+        <div style="text-align: center; margin-top: var(--space-xl);">
+          <a href="#servicios" class="hero-cta" onclick="navigate('servicios')" style="display: inline-block;">Ver servicios completos</a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Page: Servicios -->
+  <div id="page-servicios" class="page">
+    <section class="section">
+      <div class="container container--narrow">
+        <h1>Servicios Legales</h1>
+        <p class="lead">Soluciones jurídicas estratégicas en Derecho Penal para personas físicas y empresas. Defensa técnica de vanguardia ante tribunales Nacional y Federal en todo el país.</p>
+
+        <div style="margin-top: var(--space-xl);">
+          <div class="card" style="margin-bottom: var(--space-lg); border-left: 4px solid var(--accent);">
+            <h3>Defensa Penal Estratégica</h3>
+            <p class="card-text" style="margin-bottom: var(--space-md); line-height: 1.7;">
+              Representación integral de personas físicas y jurídicas ante la Justicia Nacional y Federal. Enfoque estratégico basado en 15 años de experiencia en el sistema judicial argentino, con conocimiento profundo de la dinámica interna de los tribunales.
+            </p>
+            <p style="font-weight: 600; margin-bottom: var(--space-xs);">Alcance:</p>
+            <ul style="margin-left: 1.5rem; color: var(--muted); line-height: 1.7;">
+              <li>Defensa ante tribunales Nacional y Federal de todo el país</li>
+              <li>Litigio de alta complejidad técnica y jurídica</li>
+              <li>Casos de alto perfil mediático</li>
+              <li>Representación en todas las etapas procesales</li>
+            </ul>
+          </div>
+
+          <div class="card" style="margin-bottom: var(--space-lg);">
+            <h3>Asesoramiento Corporativo y Compliance Penal</h3>
+            <p class="card-text" style="margin-bottom: var(--space-md); line-height: 1.7;">
+              Consultoría legal preventiva para empresas de primera línea, compañías nacionales e internacionales. Gestión de riesgos penales y diseño de programas de compliance adaptados a cada organización.
+            </p>
+            <p style="font-weight: 600; margin-bottom: var(--space-xs);">Servicios incluidos:</p>
+            <ul style="margin-left: 1.5rem; color: var(--muted); line-height: 1.7;">
+              <li>Auditoría de riesgos penales corporativos</li>
+              <li>Diseño e implementación de programas de compliance</li>
+              <li>Asesoramiento preventivo ante situaciones de riesgo</li>
+              <li>Capacitación interna en prevención de delitos</li>
+              <li>Confidencialidad absoluta en todas las consultas</li>
+            </ul>
+          </div>
+
+          <div class="card" style="margin-bottom: var(--space-lg);">
+            <h3>Defensa Técnica de Vanguardia</h3>
+            <p class="card-text" style="line-height: 1.7;">
+              Actualización doctrinaria constante y enfoque académico garantizan una defensa basada en los últimos desarrollos jurisprudenciales y doctrinarios. Orientación permanente a la protección de derechos y garantías constitucionales de los clientes.
+            </p>
+          </div>
+
+          <div class="card" style="background: var(--bg3);">
+            <h3>Áreas de especialización penal</h3>
+            <div style="margin-top: var(--space-md);">
+              <div style="margin-bottom: var(--space-md);">
+                <h4 style="font-size: 1.1rem; margin-bottom: var(--space-xs);">Delitos económicos y financieros</h4>
+                <p class="card-text">Fraude, estafas, administración fraudulenta, lavado de activos, evasión fiscal.</p>
+              </div>
+              <div style="margin-bottom: var(--space-md);">
+                <h4 style="font-size: 1.1rem; margin-bottom: var(--space-xs);">Delitos contra la administración pública</h4>
+                <p class="card-text">Cohecho, tráfico de influencias, negociaciones incompatibles, enriquecimiento ilícito.</p>
+              </div>
+              <div style="margin-bottom: var(--space-md);">
+                <h4 style="font-size: 1.1rem; margin-bottom: var(--space-xs);">Delitos informáticos</h4>
+                <p class="card-text">Acceso indebido a sistemas, violación de datos personales, fraude informático, extorsión digital.</p>
+              </div>
+              <div>
+                <h4 style="font-size: 1.1rem; margin-bottom: var(--space-xs);">Otros delitos federales</h4>
+                <p class="card-text">Narcotráfico, contrabando, trata de personas, delitos contra la integridad sexual.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Page: Sobre mí -->
+  <div id="page-sobre-mi" class="page">
+    <section class="section">
+      <div class="container container--narrow">
+        <h1>Sobre mí</h1>
+
+        <div class="about-grid">
+          <div style="width: 100%;">
+            <img src="WhatsApp Image 2026-05-07 at 6.05.17 PM.jpeg" alt="Dr. Cristian Gustavo Colombo" style="width: 100%; border-radius: var(--radius-md); box-shadow: var(--shadow-md); border: 1px solid var(--border);" loading="lazy">
+          </div>
+          <div class="about-content">
+            <h2>Dr. Cristian Gustavo Colombo</h2>
+            <p style="color: var(--muted); margin-bottom: var(--space-md); font-size: 1.1rem;">Abogado especialista en Derecho Penal</p>
+            <p style="margin-bottom: var(--space-md); line-height: 1.75;">
+              Abogado egresado de la Universidad de Buenos Aires (UBA), con una trayectoria de excelencia en el ámbito del Derecho Penal. Su práctica profesional se distingue por una visión estratégica integral, consolidada tras <strong>15 años de carrera en la Justicia Nacional en lo Criminal y Correccional Federal</strong>.
+            </p>
+            <p style="line-height: 1.75;">
+              Esta experiencia le otorga un conocimiento profundo de la dinámica interna del sistema judicial y del litigio de alta complejidad, posicionándolo como consultor legal de importantes compañías nacionales e internacionales.
+            </p>
+          </div>
+        </div>
+
+        <div class="credentials">
+          <div class="credentials-item">
+            <span class="credentials-label">Matrícula</span>
+            <span class="credentials-value">Tomo 81, Folio 309 — CPACF</span>
+          </div>
+          <div class="credentials-item">
+            <span class="credentials-label">Universidad</span>
+            <span class="credentials-value">Universidad de Buenos Aires (UBA)</span>
+          </div>
+          <div class="credentials-item">
+            <span class="credentials-label">Colegio Profesional</span>
+            <span class="credentials-value">Colegio Público de Abogados de Capital Federal</span>
+          </div>
+          <div class="credentials-item">
+            <span class="credentials-label">Especialización</span>
+            <span class="credentials-value">Derecho Penal</span>
+          </div>
+        </div>
+
+        <div style="margin-top: var(--space-xl);">
+          <h3>Trayectoria profesional</h3>
+
+          <div class="card" style="margin-top: var(--space-md); margin-bottom: var(--space-md); background: var(--bg3); border-left: 4px solid var(--accent);">
+            <h4 style="margin-bottom: var(--space-sm); font-size: 1.25rem;">15 años en la Justicia Nacional</h4>
+            <p class="card-text" style="margin-bottom: var(--space-xs);"><strong>Justicia Nacional en lo Criminal y Correccional Federal</strong></p>
+            <p class="card-text" style="line-height: 1.7;">
+              Carrera consolidada en el sistema judicial que le otorgó un conocimiento profundo de la dinámica interna de los tribunales y del litigio penal de alta complejidad. Esta experiencia constituye la base de su visión estratégica integral.
+            </p>
+          </div>
+
+          <div class="card" style="margin-bottom: var(--space-md);">
+            <h4 style="margin-bottom: var(--space-sm);">Socio Fundador</h4>
+            <p class="card-text" style="margin-bottom: var(--space-xs);"><strong>Cristian Colombo & Asociados</strong></p>
+            <p class="card-text">Lidera la defensa y asesoramiento de personas físicas y empresas de primera línea, brindando soluciones jurídicas eficaces tanto en el plano preventivo como en la representación ante tribunales Nacional y Federal de todo el país.</p>
+          </div>
+
+          <div class="card">
+            <h4 style="margin-bottom: var(--space-sm);">Ex Socio</h4>
+            <p class="card-text"><strong>Estudio Pou Queirolo, Colombo & Asociados</strong></p>
+          </div>
+        </div>
+
+        <div style="margin-top: var(--space-xl);">
+          <h3>Experiencia académica</h3>
+          <div class="card" style="margin-top: var(--space-md); background: var(--bg3);">
+            <h4 style="margin-bottom: var(--space-sm);">Profesor Adjunto</h4>
+            <p class="card-text" style="margin-bottom: var(--space-xs);"><strong>Universidad de Buenos Aires (UBA)</strong></p>
+            <p class="card-text" style="margin-bottom: var(--space-sm);">Materia: "Elementos de Derecho Penal y Procesal Penal"</p>
+            <p class="card-text" style="line-height: 1.7;">
+              Su vocación por la formación y la actualización doctrinaria garantiza una defensa técnica de vanguardia, orientada siempre a la protección de los derechos y garantías constitucionales de sus clientes.
+            </p>
+          </div>
+        </div>
+
+        <div style="margin-top: var(--space-xl);">
+          <h3>Enfoque profesional</h3>
+          <p style="margin-top: var(--space-md); line-height: 1.75; font-size: 1.05rem;">
+            En el ámbito privado, lidera la defensa y asesoramiento de personas físicas y empresas de primera línea, brindando soluciones jurídicas eficaces tanto en el plano preventivo como en la representación ante tribunales Nacional y Federal de todo el país.
+          </p>
+          <p style="margin-top: var(--space-md); line-height: 1.75; font-size: 1.05rem;">
+            Su enfoque combina el <strong>rigor técnico con la confidencialidad absoluta</strong>, pilares que le han permitido posicionarse como consultor legal de importantes compañías nacionales e internacionales.
+          </p>
+        </div>
+
+        <div style="margin-top: var(--space-xl);">
+          <h3>Áreas de especialización</h3>
+          <div class="grid" style="margin-top: var(--space-md);">
+            <div class="card">
+              <h4 style="margin-bottom: var(--space-sm);">Litigio estratégico</h4>
+              <ul style="margin-left: 1.25rem; color: var(--muted);">
+                <li>Defensa penal de alta complejidad</li>
+                <li>Representación ante tribunales Nacional y Federal</li>
+                <li>Casos de alto perfil mediático</li>
+              </ul>
+            </div>
+            <div class="card">
+              <h4 style="margin-bottom: var(--space-sm);">Asesoramiento preventivo</h4>
+              <ul style="margin-left: 1.25rem; color: var(--muted);">
+                <li>Consultoría legal para empresas</li>
+                <li>Gestión de riesgos penales</li>
+                <li>Compliance corporativo</li>
+              </ul>
+            </div>
+            <div class="card">
+              <h4 style="margin-bottom: var(--space-sm);">Defensa técnica de vanguardia</h4>
+              <ul style="margin-left: 1.25rem; color: var(--muted);">
+                <li>Actualización doctrinaria constante</li>
+                <li>Protección de garantías constitucionales</li>
+                <li>Confidencialidad absoluta</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Page: Contacto -->
+  <div id="page-contacto" class="page">
+    <section class="section">
+      <div class="container container--narrow">
+        <div class="section-title">
+          <h1>Contacto</h1>
+          <p class="lead">Comuníquese para solicitar una consulta legal. Responderemos a la brevedad.</p>
+        </div>
+
+        <form id="contactForm" style="margin-top: var(--space-xl);">
+          <div class="form-group">
+            <label for="name">Nombre completo</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+
+          <div class="form-group">
+            <label for="phone">Teléfono</label>
+            <input type="tel" id="phone" name="phone">
+          </div>
+
+          <div class="form-group">
+            <label for="message">Consulta</label>
+            <textarea id="message" name="message" required placeholder="Describa brevemente su situación legal..."></textarea>
+          </div>
+
+          <p class="form-disclaimer">
+            Toda comunicación con este estudio jurídico es estrictamente confidencial y está protegida por el secreto profesional del abogado.
+          </p>
+
+          <button type="submit" class="btn">Enviar consulta</button>
+        </form>
+
+        <div style="margin-top: var(--space-2xl);">
+          <div class="card">
+            <h3>Información de contacto</h3>
+            <p style="margin-top: var(--space-md);"><strong>Email:</strong> [Por completar]</p>
+            <p style="margin-top: var(--space-sm);"><strong>Teléfono:</strong> [Por completar]</p>
+            <p style="margin-top: var(--space-sm);"><strong>Dirección:</strong> Ciudad Autónoma de Buenos Aires</p>
+            <p style="margin-top: var(--space-md);"><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/cristiancolombo" target="_blank" rel="noopener" style="color: var(--accent); text-decoration: underline;">linkedin.com/in/cristiancolombo</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>Cristian Colombo & Asociados</h4>
+          <p>Estudio jurídico especializado en Derecho Penal en la Ciudad Autónoma de Buenos Aires.</p>
+        </div>
+        <div class="footer-section">
+          <h4>Contacto</h4>
+          <p>Email: [Por completar]</p>
+          <p>Tel: [Por completar]</p>
+          <p>CABA, Argentina</p>
+        </div>
+        <div class="footer-section">
+          <h4>Enlaces</h4>
+          <p><a href="#home" onclick="navigate('home')">Inicio</a></p>
+          <p><a href="#servicios" onclick="navigate('servicios')">Servicios</a></p>
+          <p><a href="#sobre-mi" onclick="navigate('sobre-mi')">Sobre mí</a></p>
+          <p><a href="#contacto" onclick="navigate('contacto')">Contacto</a></p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Dr. Cristian Gustavo Colombo. Matrícula CPACF Tomo 81, Folio 309. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const PAGES = ['home', 'servicios', 'sobre-mi', 'contacto'];
+
+    function navigate(page) {
+      if (!PAGES.includes(page)) return;
+
+      // Hide all pages
+      PAGES.forEach(p => {
+        document.getElementById(`page-${p}`).classList.remove('active');
+      });
+
+      // Show selected page
+      document.getElementById(`page-${page}`).classList.add('active');
+
+      // Update nav links
+      document.querySelectorAll('.nav-link').forEach(link => {
+        link.classList.remove('active');
+      });
+
+      const activeLink = document.querySelector(`.nav-link[onclick*="${page}"]`);
+      if (activeLink) {
+        activeLink.classList.add('active');
+      }
+
+      // Close mobile menu
+      document.getElementById('navMenu').classList.remove('active');
+
+      // Update hash without jumping
+      history.pushState(null, null, `#${page}`);
+
+      // Scroll to top
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function toggleMenu() {
+      document.getElementById('navMenu').classList.toggle('active');
+    }
+
+    // Handle hash on load
+    window.addEventListener('load', () => {
+      const hash = window.location.hash.substring(1);
+      if (PAGES.includes(hash)) {
+        navigate(hash);
+      }
+    });
+
+    // Handle browser back/forward
+    window.addEventListener('popstate', () => {
+      const hash = window.location.hash.substring(1) || 'home';
+      if (PAGES.includes(hash)) {
+        navigate(hash);
+      }
+    });
+
+    // Form handling
+    document.getElementById('contactForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('Formulario enviado. En producción, esto se conectaría a un servicio de email.');
+    });
+
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', (e) => {
+      const nav = document.getElementById('navMenu');
+      const toggle = document.querySelector('.navbar-toggle');
+      if (!nav.contains(e.target) && !toggle.contains(e.target)) {
+        nav.classList.remove('active');
+      }
+    });
+  </script>
+</body>
+</html>

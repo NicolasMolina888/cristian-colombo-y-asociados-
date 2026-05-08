@@ -1,0 +1,17 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+
+# Temporary files
+*.tmp
+*.log
+tmpclaude-*
+
+# Archivos internos (no publicar)
+CLAUDE.md
+*.pdf
+Perfil_*
