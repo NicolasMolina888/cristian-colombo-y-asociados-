@@ -315,6 +315,17 @@
       transform: translateY(-2px);
     }
 
+    .hero-cta--outline {
+      background: transparent;
+      color: var(--accent);
+      border: 2px solid var(--accent);
+    }
+
+    .hero-cta--outline:hover {
+      background: var(--accent);
+      color: var(--bg3);
+    }
+
     /* Grid */
     .grid {
       display: grid;
@@ -602,24 +613,11 @@
           <div class="hero-logo">
             <img src="Captura de pantalla 2026-05-08 013756.png" alt="Cristian Colombo & Asociados">
           </div>
-          <p class="hero-subtitle">Abogado egresado de la Universidad de Buenos Aires (UBA), con una práctica profesional que se distingue por una visión estratégica integral, consolidada tras 15 años de carrera en la Justicia Nacional en lo Criminal y Correccional Federal. Esta experiencia otorga un conocimiento profundo de la dinámica interna de los Tribunales Federales y Criminales de todo el país, lo cual lo ha posicionado como consultor externo y asesor en cuestiones penales a importantes compañías nacionales e internacionales.</p>
-          <div style="text-align: center;">
-            <a href="#contacto" class="hero-cta" onclick="navigate('contacto')">Solicitar consulta</a>
+          <p class="hero-subtitle">Abogado egresado de la Universidad de Buenos Aires (UBA), con una práctica profesional que se distingue por una visión estratégica integral, consolidada tras 15 años de carrera en la Justicia Nacional en lo Criminal y Correccional Federal. Esta experiencia le ha otorgado un conocimiento profundo de la dinámica interna de los Tribunales Federales y Criminales de todo el país, lo cual lo ha posicionado como consultor externo y asesor en cuestiones penales a importantes compañías nacionales e internacionales.</p>
+          <div style="display: flex; gap: var(--space-md); justify-content: center; flex-wrap: wrap; margin-top: var(--space-lg);">
+            <a href="#contacto" class="hero-cta" onclick="navigate('contacto')" style="margin-top: 0;">Solicitar consulta</a>
+            <a href="#sobre-mi" class="hero-cta hero-cta--outline" onclick="navigate('sobre-mi')" style="margin-top: 0;">Trayectoria</a>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container container--narrow">
-        <div class="section-title">
-          <h2>Trayectoria</h2>
-        </div>
-        <p style="font-size: clamp(1.05rem, 2vw, 1.2rem); line-height: 1.7; color: var(--text); text-align: center; max-width: 900px; margin: 0 auto var(--space-lg);">
-          Abogado egresado de la Universidad de Buenos Aires (UBA), con una práctica profesional que se distingue por una visión estratégica integral, consolidada tras 15 años de carrera en la Justicia Nacional en lo Criminal y Correccional Federal. Esta experiencia otorga un conocimiento profundo de la dinámica interna del sistema judicial y del litigio de alta complejidad.
-        </p>
-        <div style="text-align: center;">
-          <a href="#sobre-mi" class="hero-cta" onclick="navigate('sobre-mi')" style="display: inline-block;">Trayectoria</a>
         </div>
       </div>
     </section>
