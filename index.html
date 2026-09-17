@@ -785,6 +785,24 @@
           <button type="submit" class="btn">Enviar consulta</button>
         </form>
 
+        <div id="sendChoice" class="card" style="display:none; margin-top: var(--space-lg); text-align:center;">
+          <p style="margin-bottom: var(--space-md);">Elegí cómo enviar tu consulta. Podés usar ambas opciones.</p>
+          <div style="display:flex; gap: var(--space-sm); justify-content:center; flex-wrap:wrap;">
+            <button type="button" id="sendWhatsapp" class="btn">Enviar por WhatsApp</button>
+            <button type="button" id="sendEmail" class="btn">Enviar por Email</button>
+          </div>
+
+          <div id="emailFallback" style="display:none; margin-top: var(--space-lg); text-align:left;">
+            <p style="margin-bottom: var(--space-sm);">
+              Si no se abrió tu programa de correo (por ejemplo, si usás Gmail desde el navegador),
+              copiá este texto y enviálo manualmente a
+              <a href="mailto:cris_colombo@fibertel.com.ar" style="color: var(--accent);">cris_colombo@fibertel.com.ar</a>:
+            </p>
+            <textarea id="emailFallbackText" readonly style="width:100%; min-height:140px; font-family:inherit; font-size:0.95rem; padding: var(--space-sm); border-radius: var(--radius-sm); border: 1px solid var(--border); background: var(--bg2); color: var(--text);"></textarea>
+            <button type="button" id="copyEmailText" class="btn" style="margin-top: var(--space-sm);">Copiar texto</button>
+          </div>
+        </div>
+
         <div style="margin-top: var(--space-2xl);">
           <div class="card">
             <h3>Información de contacto</h3>
@@ -881,9 +899,67 @@
     });
 
     // Form handling
+    const STUDIO_PHONE = '541531509293';
+    const STUDIO_EMAIL = 'cris_colombo@fibertel.com.ar';
+    let pendingConsulta = null;
+
     document.getElementById('contactForm').addEventListener('submit', (e) => {
       e.preventDefault();
-      alert('Formulario enviado. En producción, esto se conectaría a un servicio de email.');
+
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const message = document.getElementById('message').value.trim();
+
+      pendingConsulta = { name, email, phone, message };
+      document.getElementById('sendChoice').style.display = 'block';
+      document.getElementById('sendChoice').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+
+    document.getElementById('sendWhatsapp').addEventListener('click', () => {
+      if (!pendingConsulta) return;
+      const { name, email, phone, message } = pendingConsulta;
+      const waText =
+        `Nueva consulta desde la web:\n\n` +
+        `Nombre: ${name}\n` +
+        `Email: ${email}\n` +
+        (phone ? `Teléfono: ${phone}\n` : '') +
+        `Consulta: ${message}`;
+      window.open(`https://wa.me/${STUDIO_PHONE}?text=${encodeURIComponent(waText)}`, '_blank', 'noopener');
+    });
+
+    document.getElementById('sendEmail').addEventListener('click', () => {
+      if (!pendingConsulta) return;
+      const { name, email, phone, message } = pendingConsulta;
+      const mailSubject = `Nueva consulta web de ${name}`;
+      const mailBody =
+        `Nombre: ${name}\n` +
+        `Email: ${email}\n` +
+        (phone ? `Teléfono: ${phone}\n` : '') +
+        `\nConsulta:\n${message}`;
+
+      window.location.href = `mailto:${STUDIO_EMAIL}?subject=${encodeURIComponent(mailSubject)}&body=${encodeURIComponent(mailBody)}`;
+
+      const fallbackText =
+        `Para: ${STUDIO_EMAIL}\n` +
+        `Asunto: ${mailSubject}\n\n` +
+        mailBody;
+      document.getElementById('emailFallbackText').value = fallbackText;
+      document.getElementById('emailFallback').style.display = 'block';
+    });
+
+    document.getElementById('copyEmailText').addEventListener('click', () => {
+      const textarea = document.getElementById('emailFallbackText');
+      textarea.select();
+      textarea.setSelectionRange(0, 999999);
+      navigator.clipboard?.writeText(textarea.value).then(() => {
+        const btn = document.getElementById('copyEmailText');
+        const original = btn.textContent;
+        btn.textContent = '¡Copiado!';
+        setTimeout(() => { btn.textContent = original; }, 2000);
+      }).catch(() => {
+        document.execCommand('copy');
+      });
     });
 
     // Close mobile menu when clicking outside
