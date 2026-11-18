@@ -4,7 +4,53 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dr. Cristian Colombo | Abogado Penalista en Buenos Aires</title>
-  <meta name="description" content="Estudio jurídico especializado en Derecho Penal. Representación de víctimas con experiencia en casos de alto perfil en CABA.">
+  <meta name="description" content="Estudio jurídico especializado en Derecho Penal en CABA. Defensa y representación de víctimas en casos de alto perfil. Solicitá tu consulta.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="author" content="Cristian Colombo & Asociados">
+  <link rel="canonical" href="https://cgcolomboyasociados.com/">
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_AR">
+  <meta property="og:url" content="https://cgcolomboyasociados.com/">
+  <meta property="og:image" content="https://cgcolomboyasociados.com/logo-cristian-colombo-asociados.png">
+  <meta property="og:image:alt" content="Cristian Colombo & Asociados — Estudio jurídico penal">
+  <meta property="og:site_name" content="Cristian Colombo & Asociados">
+  <meta property="og:title" content="Dr. Cristian Colombo | Abogado Penalista en Buenos Aires">
+  <meta property="og:description" content="Estudio jurídico especializado en Derecho Penal en CABA. Defensa y representación de víctimas en casos de alto perfil. Solicitá tu consulta.">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Dr. Cristian Colombo | Abogado Penalista en Buenos Aires">
+  <meta name="twitter:description" content="Estudio jurídico especializado en Derecho Penal en CABA. Defensa y representación de víctimas en casos de alto perfil. Solicitá tu consulta.">
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%231a1a1a'/%3E%3Ctext x='32' y='42' font-family='Georgia,serif' font-size='28' font-weight='700' text-anchor='middle' fill='%23ffffff'%3ECC%3C/text%3E%3C/svg%3E">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LegalService",
+    "name": "Cristian Colombo & Asociados",
+    "url": "https://cgcolomboyasociados.com/",
+    "image": "https://cgcolomboyasociados.com/logo-cristian-colombo-asociados.png",
+    "description": "Estudio jurídico especializado en Derecho Penal en la Ciudad Autónoma de Buenos Aires.",
+    "telephone": "+5491131509293",
+    "email": "cris_colombo@fibertel.com.ar",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Ciudad Autónoma de Buenos Aires",
+      "addressCountry": "AR"
+    },
+    "areaServed": { "@type": "AdministrativeArea", "name": "Ciudad Autónoma de Buenos Aires" },
+    "knowsAbout": ["Derecho Penal", "Defensa penal", "Litigio de alta complejidad", "Asesoramiento penal corporativo"],
+    "founder": {
+      "@type": "Person",
+      "name": "Cristian Gustavo Colombo",
+      "jobTitle": "Abogado penalista",
+      "alumniOf": { "@type": "CollegeOrUniversity", "name": "Universidad de Buenos Aires" },
+      "identifier": "CPACF Tomo 81, Folio 309",
+      "sameAs": ["https://www.linkedin.com/in/cristian-g-colombo-b749b833"]
+    }
+  }
+  </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -584,6 +630,12 @@
         transition-duration: 0.01ms !important;
       }
     }
+
+    /* Solo lectores de pantalla y buscadores (sin efecto visual) */
+    .sr-only {
+      position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+      overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+    }
   </style>
 </head>
 <body>
@@ -607,11 +659,12 @@
 
   <!-- Page: Home -->
   <div id="page-home" class="page active">
+    <h1 class="sr-only">Estudio jurídico penal en Buenos Aires — Dr. Cristian Colombo &amp; Asociados</h1>
     <section class="section section--hero">
       <div class="container">
         <div class="hero-content">
           <div class="hero-logo">
-            <img src="Captura de pantalla 2026-05-08 013756.png" alt="Cristian Colombo & Asociados">
+            <img src="logo-cristian-colombo-asociados.png" alt="Cristian Colombo & Asociados">
           </div>
           <p class="hero-subtitle">Abogado egresado de la Universidad de Buenos Aires (UBA), con una práctica profesional que se distingue por una visión estratégica integral, consolidada tras 15 años de carrera en la Justicia Nacional en lo Criminal y Correccional Federal. Esta experiencia le ha otorgado un conocimiento profundo de la dinámica interna de los Tribunales Federales y Criminales de todo el país, lo cual lo ha posicionado como consultor externo y asesor en cuestiones penales a importantes compañías nacionales e internacionales.</p>
           <div style="display: flex; gap: var(--space-md); justify-content: center; flex-wrap: wrap; margin-top: var(--space-lg);">
@@ -701,7 +754,7 @@
 
         <div class="about-grid">
           <div class="about-photo">
-            <img src="d0c56ecb-4db2-430a-8bae-f37134120f9d.jpg" alt="Dr. Cristian Gustavo Colombo" loading="lazy">
+            <img src="dr-cristian-colombo-abogado-penalista.jpg" alt="Dr. Cristian Gustavo Colombo" loading="lazy">
           </div>
           <div class="about-content">
             <h2>Dr. Cristian Gustavo Colombo</h2>
@@ -871,8 +924,13 @@
       // Close mobile menu
       document.getElementById('navMenu').classList.remove('active');
 
-      // Update hash without jumping
-      history.pushState(null, null, `#${page}`);
+      // Title y meta description por sección (SEO)
+      updateSeo(page);
+
+      // Actualizar hash (dispara hashchange, que es idempotente)
+      if ((window.location.hash.substring(1) || 'home') !== page) {
+        window.location.hash = page;
+      }
 
       // Scroll to top
       window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -890,13 +948,41 @@
       }
     });
 
-    // Handle browser back/forward
-    window.addEventListener('popstate', () => {
+    // Handle browser back/forward y cambios de hash
+    window.addEventListener('hashchange', () => {
       const hash = window.location.hash.substring(1) || 'home';
-      if (PAGES.includes(hash)) {
+      if (PAGES.includes(hash) && !document.getElementById(`page-${hash}`).classList.contains('active')) {
         navigate(hash);
       }
     });
+
+    // SEO por sección
+    const SEO = {
+      'home': {
+        title: 'Dr. Cristian Colombo | Abogado Penalista en Buenos Aires',
+        desc: 'Estudio jurídico especializado en Derecho Penal en CABA. Defensa y representación de víctimas en casos de alto perfil. Solicitá tu consulta.'
+      },
+      'servicios': {
+        title: 'Servicios Legales | Derecho Penal — Cristian Colombo & Asociados',
+        desc: 'Defensa penal, asesoramiento corporativo y litigio de alta complejidad en Buenos Aires. Consultá con el Dr. Cristian Colombo.'
+      },
+      'sobre-mi': {
+        title: 'Trayectoria | Dr. Cristian Colombo — Abogado en Buenos Aires',
+        desc: 'Egresado de la UBA y ex funcionario judicial en la Justicia Nacional en lo Criminal y Correccional Federal. Matrícula CPACF Tomo 81, Folio 309.'
+      },
+      'contacto': {
+        title: 'Contacto | Estudio Jurídico Cristian Colombo & Asociados',
+        desc: 'Solicitá tu consulta con el Dr. Cristian Colombo, abogado penalista en Buenos Aires. Escribinos por WhatsApp, email o teléfono.'
+      }
+    };
+
+    function updateSeo(page) {
+      const s = SEO[page];
+      if (!s) return;
+      document.title = s.title;
+      const meta = document.querySelector('meta[name="description"]');
+      if (meta) meta.setAttribute('content', s.desc);
+    }
 
     // Form handling
     const STUDIO_PHONE = '541531509293';
